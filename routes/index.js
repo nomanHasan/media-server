@@ -7,7 +7,9 @@ router.use('/api', api);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'File Explorer'});
+  res.json({
+    title: 'File Explorer'
+  })
 });
 
 module.exports = router;

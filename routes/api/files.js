@@ -1,16 +1,15 @@
 var express = require('express');
 var router = express.Router();
+const url = require('url');
 const filex = require('../../filex');
 
+const fileList = filex.getFlattenedFiles(process.env.DEFAULT_DIRECTORY);
+
 router.get('/files', function (req, res, next) {
-
-    const fileList = filex.getFlattenedFiles('/home/noman/Downloads')
-
 
     const mp3Expression = /\.*$/
 
     let mp3Files = fileList.filter(f => f.match(mp3Expression))
-
 
     const fileNameExpression = /\/([^\/]*)\.(\mp3)/
 
@@ -32,7 +31,19 @@ router.get('/files', function (req, res, next) {
     })
 
 
-    res.send(mp3Files);
+    res.json(mp3Files);
+});
+
+router.get('/file/:fileId', function(req, res, next) {
+    let fileId = req.params.fileId;
+    // fileId = fileId.replace(/%20/g, " ");
+    // console.log(fileId);
+    
+    let file = fileList[fileId];
+
+
+
+    res.download(file);
 });
 
 module.exports = router;

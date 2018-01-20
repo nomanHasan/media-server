@@ -1,88 +1,64 @@
-import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Grid from 'material-ui/Grid';
+import { FormLabel, FormControlLabel } from 'material-ui/Form';
+import Radio, { RadioGroup } from 'material-ui/Radio';
+import Paper from 'material-ui/Paper';
+import Explorer from './explorer/explorer';
+import Player from './player/player';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">Welcome to React</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
-import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-
-class App extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: 0
-    };
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    marginTop: 30,
+  },
+  paper: {
+    padding: 16,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+  scrolled : {
+    overflow: 'auto',
+    height: '100vh'
   }
+});
 
-  render() {
-    let { disabled, checked } = this.props;
 
-    return (
-      <div>
+function App(props)  {
+  const { classes } = props;
 
-        <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>
-        <Slider
-            label='Basic example:'
-            min={ 1 }
-            max={ 300 }
-            step={ 1 }
-            defaultValue={ 2 }
-            showValue={ true }
-            // tslint:disable-next-line:jsx-no-lambda
-            onChange={ (value) => console.log(value) }
-          />
-
-          <CommandBarButton
-            data-automation-id='test'
-            disabled={disabled}
-            checked={checked}
-            iconProps={{ iconName: 'Add' }}
-            text='Create account'
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            }}
-          />
-          <CommandBarButton
-            data-automation-id='test2'
-            disabled={disabled}
-            checked={checked}
-            iconProps={{ iconName: 'Mail' }}
-            text='Send Mail'
-          />
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={24}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>xs=12</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Explorer></Explorer>
+        </Grid>
+        <Grid item xs={8}>
+          <Player className={classes.paper}></Player>
+        </Grid>
+      </Grid>
+    </div>
+  );
 }
 
-export default App
+App.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);
