@@ -6,20 +6,29 @@ import {FileApi, FILE_API_URL} from '../api/fileApi';
 
 export default class Player extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
+        this.state = {play:false}
     }
 
-
+    play = () => {
+        this.setState({play: true});
+        this.audio.play();
+    }
+    stop = () => {
+        this.setState({play: false});
+        this.audio.pause();
+    }
 
     render() {
         return (
             <div>
-                <audio  
-                controls
-                src= {`${FILE_API_URL}/2`}
-                type="audio/mpeg"
-                ></audio>
+                <audio
+                    controls
+                    src={`${FILE_API_URL}/3`}
+                    type="audio/mpeg"
+                    ref=
+                    {(audio) => {this.audio = audio} }></audio>
                 <Slider
                     label='Basic example:'
                     min={1}
@@ -28,13 +37,13 @@ export default class Player extends Component {
                     defaultValue={2}
                     showValue={true}/>
 
-                <Button fab color="primary" aria-label="add">
+                <Button fab color="primary" onClick={this.play} aria-label="add">
                     <PlayArrow/>
                 </Button>
                 <Button fab color="primary" aria-label="add">
                     <Pause/>
                 </Button>
-                <Button fab color="primary" aria-label="add">
+                <Button fab color="primary" onClick={this.stop} aria-label="add">
                     <Stop/>
                 </Button>
 
