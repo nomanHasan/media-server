@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const filex = require('../filex');
-const api = require('./api/files');
+const api = require('./api/file.route');
 
 router.use('/api', api);
 

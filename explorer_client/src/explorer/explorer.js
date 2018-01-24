@@ -22,7 +22,7 @@ class Explorer extends Component {
         ]
       ]
     }
-    console.log(this.state.files);
+    // console.log(this.state.files);
 
     FileApi.getFiles().then(res => {
       this.setState({files: res.data.slice(0,100)});
@@ -51,7 +51,7 @@ const FileList = props => {
     height: '70vh'
   }
 
-  console.log(props);
+  // console.log(props);
   return (
     <List style={style} >
       {props.map(file =>FileItem(file))}
@@ -61,12 +61,12 @@ const FileList = props => {
 
 const FileItem = props => {
 
-  console.log(props);
-  return (<ListItem button key={props[1]} >
+  // console.log(props);
+  return (<ListItem button key={props.name} >
   <ListItemIcon>
     <Audiotrack />
   </ListItemIcon>
-  <ListItemText primary={props[1]} />
+  <ListItemText primary={props.name} />
 </ListItem>)
 } 
 
