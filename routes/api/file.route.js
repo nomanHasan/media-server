@@ -4,13 +4,14 @@ const url = require('url');
 const filex = require('../../filex');
 const fileService = require('../../services/files.service');
 
-// const fileList = filex.getFlattenedFiles(process.env.DEFAULT_DIRECTORY);
+// fileService.readFiles();
 
 router.get('/files', async function (req, res, next) {
 
+    let mp3Files;
+
     try {
-        const data = await fileService.readFiles();
-        const mp3Files = await fileService.getFiles();
+        mp3Files = await fileService.getFiles();
 
     } catch (error) {
         return res.status(400).json({status: 400, message: "Not succesful"});
@@ -18,13 +19,22 @@ router.get('/files', async function (req, res, next) {
     return res.json(mp3Files);
 });
 
-router.get('/file/:fileId', function (req, res, next) {
+router.get('/file/:fileId', async function (req, res, next) {
     let fileId = req.params.fileId;
-    // fileId = fileId.replace(/%20/g, " "); console.log(fileId);
 
-    let file = fileList[fileId];
+    
+    let file;
+    
+    try {
 
-    res.download(file);
+        file = await fileService.getFile(fileId);
+        
+    } catch (error) {
+        return res.status(400).json({status: 400, message: 'File not Found'});
+    }
+
+
+    return res.download(file.path);
 });
 
 module.exports = router;

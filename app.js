@@ -24,6 +24,13 @@ app.use(function(req, res, next) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+const mongoURL = 'mongodb://127.0.0.1:27017/filex';
+var mongoose = require('mongoose');
+mongoose.connect(mongoURL)
+.then(()=> { console.log(`Succesfully Connected to the Mongodb Database  at URL : ${mongoURL}`)})
+.catch(()=> { console.log(`Error Connecting to the Mongodb Database at URL : ${mongoURL}`)})
+
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
