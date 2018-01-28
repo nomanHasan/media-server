@@ -1,19 +1,42 @@
-<audio controls [src]="src" type="audio/mpeg" #audio>
+<audio [src]="src" type="audio/mpeg" #audio>
 </audio>
 
-<button mat-fab color="primary" (click)="onPlayPauseClick($event)" >
-    <mat-icon *ngIf="!state.playing" aria-label="Example icon-button with a heart icon">play_arrow</mat-icon>
-    <mat-icon *ngIf="state.playing" aria-label="Example icon-button with a heart icon">pause</mat-icon>
-</button>
 
-<button mat-fab color="primary" (click)="stop($event)" >
-    <mat-icon aria-label="Example icon-button with a heart icon">stop</mat-icon>
-</button>
+<div class="seeker">
 
-<button mat-fab color="primary" (click)="skipNext($event)" >
-    <mat-icon aria-label="Example icon-button with a heart icon">skip_next</mat-icon>
-</button>
+    <mat-slider class="seeker-slider" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" (change)="onSeekerChange($event)"
+        [(ngModel)]="value">
+    </mat-slider>
+    <div class="time">
+        {{getTime()}}
+    </div>
 
-<button mat-fab color="primary" (click)="skipPrevious($event)">
-    <mat-icon aria-label="Example icon-button with a heart icon">skip_previous</mat-icon>
-</button>
+</div>
+
+<div class="volume">
+
+    <mat-slider class="volume-slider" [max]="100" [min]="0" [thumb-label]="thumbLabel" (change)="onVolumeChange($event)" [(ngModel)]="volume">
+
+    </mat-slider>
+
+</div>
+
+<div class="buttons">
+
+    <button mat-fab color="primary" (click)="onPlayPauseClick($event)">
+        <mat-icon *ngIf="!state.playing" aria-label="Example icon-button with a heart icon">play_arrow</mat-icon>
+        <mat-icon *ngIf="state.playing" aria-label="Example icon-button with a heart icon">pause</mat-icon>
+    </button>
+
+    <button mat-fab color="primary" (click)="stop($event)">
+        <mat-icon aria-label="Example icon-button with a heart icon">stop</mat-icon>
+    </button>
+
+    <button mat-fab color="primary" (click)="skipNext($event)">
+        <mat-icon aria-label="Example icon-button with a heart icon">skip_next</mat-icon>
+    </button>
+
+    <button mat-fab color="primary" (click)="skipPrevious($event)">
+        <mat-icon aria-label="Example icon-button with a heart icon">skip_previous</mat-icon>
+    </button>
+</div>

@@ -16,6 +16,7 @@ export class FilexComponent implements OnInit {
 
   fileList: File[];
   playingFileSrc = '';
+  selectedFile: File;
 
 
   playerState = {
@@ -26,20 +27,31 @@ export class FilexComponent implements OnInit {
 
     this.fileService.getFiles().subscribe(res => {
       this.fileList = res;
-      this.setPlayingFileSrc(this.fileList[0]._id);
+      this.selectedFile = this.fileList[0];
+      this.setPlayingFileSrc(this.selectedFile._id);
     });
 
   }
 
 
   onFileClicked(file: File) {
-    console.log(file);
+    this.selectedFile = file;
     this.setPlayingFileSrc(file._id);
   }
 
 
   setPlayingFileSrc (id) {
     this.playingFileSrc = this.fileService.FILE_URL + id;
+  }
+
+  skipNext(event) {
+    let index = this.fileList.indexOf(this.selectedFile);
+    this.selectedFile = this.fileList[++index];
+    this.setPlayingFileSrc(this.selectedFile._id);
+  }
+
+  skipPrevious(event) {
+
   }
 
 

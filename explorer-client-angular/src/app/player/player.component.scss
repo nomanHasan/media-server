@@ -1,0 +1,42 @@
+.example-h2 {
+    margin: 10px;
+}
+  
+.example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.example-margin {
+    margin: 10px;
+}
+
+.mat-slider-horizontal {
+    width: 300px;
+}
+
+.mat-slider-vertical {
+    height: 300px;
+}
+
+
+.seeker {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .seeker-slider {
+        flex: 4;
+    }
+
+    .time {
+        flex: 1;
+        margin: 5px;
+        font-size: 24px;
+        text-align: center;
+    }
+
+
+}
