@@ -1,0 +1,13 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <fex-explorer [fileList]="fileList" (fileClicked)="onFileClicked($event)" ></fex-explorer>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+    <fex-player [state]="playerState" [src]="playingFileSrc"></fex-player>
+  </div>
+
+</mat-drawer-container>

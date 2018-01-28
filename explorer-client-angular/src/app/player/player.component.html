@@ -1,0 +1,19 @@
+<audio controls [src]="src" type="audio/mpeg" #audio>
+</audio>
+
+<button mat-fab color="primary" (click)="onPlayPauseClick($event)" >
+    <mat-icon *ngIf="!state.playing" aria-label="Example icon-button with a heart icon">play_arrow</mat-icon>
+    <mat-icon *ngIf="state.playing" aria-label="Example icon-button with a heart icon">pause</mat-icon>
+</button>
+
+<button mat-fab color="primary" (click)="stop($event)" >
+    <mat-icon aria-label="Example icon-button with a heart icon">stop</mat-icon>
+</button>
+
+<button mat-fab color="primary" (click)="skipNext($event)" >
+    <mat-icon aria-label="Example icon-button with a heart icon">skip_next</mat-icon>
+</button>
+
+<button mat-fab color="primary" (click)="skipPrevious($event)">
+    <mat-icon aria-label="Example icon-button with a heart icon">skip_previous</mat-icon>
+</button>

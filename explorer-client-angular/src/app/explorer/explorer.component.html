@@ -1,0 +1,5 @@
+<mat-list>
+  <mat-list-item *ngFor="let f of fileList" (click)="onItemClick($event, f)" >
+    <button mat-button>{{ f.name }}</button>
+  </mat-list-item>
+</mat-list>
