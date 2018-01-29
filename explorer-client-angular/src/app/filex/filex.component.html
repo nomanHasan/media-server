@@ -7,7 +7,13 @@
     <button type="button" mat-button (click)="drawer.toggle()">
       Toggle sidenav
     </button>
-    <fex-player [state]="playerState" [src]="playingFileSrc" (next)="skipNext($event)" (previous)="skipPrevious($event)" ></fex-player>
+    <fex-player 
+    [state]="playerState"
+    [file]="selectedFile" 
+    (next)="skipNext($event)" 
+    (previous)="skipPrevious($event)"
+    (stateChanged)="onStateChanged($event)"
+    ></fex-player>
   </div>
 
 </mat-drawer-container>

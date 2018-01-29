@@ -1,6 +1,16 @@
-import {Component, OnInit, ViewChild, Input, AfterViewInit, EventEmitter, Output} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Input,
+  AfterViewInit,
+  EventEmitter,
+  Output
+} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {File} from '../models/file.model';
+import { IPlayerState, RepeatModes, toggleRepeatModes, DefaultPlayerState } from './player-state.interface';
+
 
 @Component({selector: 'fex-player', templateUrl: './player.component.html', styleUrls: ['./player.component.scss']})
 export class PlayerComponent implements OnInit {
@@ -9,12 +19,12 @@ export class PlayerComponent implements OnInit {
 
   audioElement: HTMLMediaElement;
 
-  @Input()src;
-  @Input()state;
+  @Input() state: IPlayerState =  DefaultPlayerState;
+  @Input()file: File;
 
-
-  @Output() next = new EventEmitter<any>();
-  @Output() previous = new EventEmitter<any>();
+  @Output()next = new EventEmitter < any > ();
+  @Output()previous = new EventEmitter < any > ();
+  @Output() stateChanged = new EventEmitter < any > ();
 
   value = 0;
   step = 1;
@@ -29,6 +39,8 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
     this.audioElement = this.audio.nativeElement;
 
+    this.audioElement.volume = 0.2;
+
     this.audioElement.onloadedmetadata = e => {
       this.max = this.audioElement.duration;
       this.play();
@@ -36,6 +48,12 @@ export class PlayerComponent implements OnInit {
 
     this.audioElement.ontimeupdate = e => {
       this.value = this.audioElement.currentTime;
+    };
+
+    this.audioElement.onended = e => {
+      this
+        .next
+        .emit(true);
     };
   }
 
@@ -57,7 +75,7 @@ export class PlayerComponent implements OnInit {
 
   }
 
-  toHHMMSS (time) {
+  toHHMMSS(time) {
     const sec_num = parseInt(time, 10);
     const hours = Math.floor(sec_num / 3600);
     const minutes = Math.floor((sec_num - (hours * 3600)) / 60);
@@ -77,7 +95,9 @@ export class PlayerComponent implements OnInit {
       secondLabel = '0' + seconds;
     }
 
-    return (hours > 0 ? hourLabel + ':' : '') + minuteLabel + ':' + secondLabel;
+    return (hours > 0
+      ? hourLabel + ':'
+      : '') + minuteLabel + ':' + secondLabel;
   }
 
   onPlayPauseClick(event) {
@@ -109,11 +129,26 @@ export class PlayerComponent implements OnInit {
   }
 
   skipNext(event) {
-    this.next.emit(true);
+    this
+      .next
+      .emit(true);
   }
 
   skipPrevious(event) {
-    this.previous.emit(true);
+    this
+      .previous
+      .emit(true);
+  }
+
+  toggleRepeat(event) {
+    this.state.repeat = toggleRepeatModes(this.state.repeat);
+    this.stateChanged.emit(this.state);
+  }
+
+  toggleShuffle(event) {
+    this.state.shuffle = !this.state.shuffle;
+    console.log(this.state.shuffle);
+    this.stateChanged.emit(this.state);
   }
 
 }

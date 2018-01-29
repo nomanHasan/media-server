@@ -1,42 +1,61 @@
-<audio [src]="src" type="audio/mpeg" #audio>
+<audio [src]="file.src" type="audio/mpeg" #audio>
 </audio>
 
+<div class="player">
 
-<div class="seeker">
-
-    <mat-slider class="seeker-slider" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" (change)="onSeekerChange($event)"
-        [(ngModel)]="value">
-    </mat-slider>
-    <div class="time">
-        {{getTime()}}
+    <div class="title">
+        {{file.name}}
     </div>
 
-</div>
+    <div class="seeker">
 
-<div class="volume">
+        <mat-slider class="seeker-slider" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel" (change)="onSeekerChange($event)"
+            [(ngModel)]="value">
+        </mat-slider>
+        <div class="time">
+            {{getTime()}}
+        </div>
 
-    <mat-slider class="volume-slider" [max]="100" [min]="0" [thumb-label]="thumbLabel" (change)="onVolumeChange($event)" [(ngModel)]="volume">
+    </div>
 
-    </mat-slider>
+    <div class="volume">
 
-</div>
+        <mat-slider class="volume-slider" [max]="100" [min]="0" [thumb-label]="thumbLabel" (change)="onVolumeChange($event)" [(ngModel)]="volume">
 
-<div class="buttons">
+        </mat-slider>
 
-    <button mat-fab color="primary" (click)="onPlayPauseClick($event)">
-        <mat-icon *ngIf="!state.playing" aria-label="Example icon-button with a heart icon">play_arrow</mat-icon>
-        <mat-icon *ngIf="state.playing" aria-label="Example icon-button with a heart icon">pause</mat-icon>
-    </button>
+    </div>
 
-    <button mat-fab color="primary" (click)="stop($event)">
-        <mat-icon aria-label="Example icon-button with a heart icon">stop</mat-icon>
-    </button>
+    <div class="toggle-buttons">
+        <button mat-icon-button (click)="toggleShuffle($event)">
+            <mat-icon *ngIf="state.shuffle" color="warn" aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
+            <mat-icon *ngIf="!state.shuffle" color="accent" aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
+        </button>
 
-    <button mat-fab color="primary" (click)="skipNext($event)">
-        <mat-icon aria-label="Example icon-button with a heart icon">skip_next</mat-icon>
-    </button>
+        <button mat-icon-button (click)="toggleRepeat($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">repeat</mat-icon>
+        </button>
+    </div>
 
-    <button mat-fab color="primary" (click)="skipPrevious($event)">
-        <mat-icon aria-label="Example icon-button with a heart icon">skip_previous</mat-icon>
-    </button>
+    <div class="buttons">
+
+
+        <button mat-fab color="primary" (click)="skipPrevious($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">skip_previous</mat-icon>
+        </button>
+
+        <button mat-fab color="primary" (click)="onPlayPauseClick($event)">
+            <mat-icon *ngIf="!state.playing" aria-label="Example icon-button with a heart icon">play_arrow</mat-icon>
+            <mat-icon *ngIf="state.playing" aria-label="Example icon-button with a heart icon">pause</mat-icon>
+        </button>
+
+        <button mat-fab color="primary" (click)="stop($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">stop</mat-icon>
+        </button>
+
+        <button mat-fab color="primary" (click)="skipNext($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">skip_next</mat-icon>
+        </button>
+
+    </div>
 </div>
