@@ -5,9 +5,10 @@
 
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
+      Explore
     </button>
     <fex-player 
+    *ngIf="selectedFile"
     [state]="playerState"
     [file]="selectedFile" 
     (next)="skipNext($event)" 

@@ -20,17 +20,17 @@ export class PlayerComponent implements OnInit {
   audioElement: HTMLMediaElement;
 
   @Input() state: IPlayerState =  DefaultPlayerState;
-  @Input()file: File;
+  @Input() file: File;
 
-  @Output()next = new EventEmitter < any > ();
-  @Output()previous = new EventEmitter < any > ();
+  @Output() next = new EventEmitter < any > ();
+  @Output() previous = new EventEmitter < any > ();
   @Output() stateChanged = new EventEmitter < any > ();
 
   value = 0;
   step = 1;
   min = 0;
   max = 100;
-  volume = 5;
+  volume = 100;
 
   thumbLabel = true;
 
@@ -39,7 +39,7 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
     this.audioElement = this.audio.nativeElement;
 
-    this.audioElement.volume = 0.2;
+    this.audioElement.volume = 1;
 
     this.audioElement.onloadedmetadata = e => {
       this.max = this.audioElement.duration;
@@ -122,7 +122,7 @@ export class PlayerComponent implements OnInit {
       .pause();
   }
 
-  stop() {
+  stop(event) {
     this
       .audioElement
       .pause();

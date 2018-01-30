@@ -27,9 +27,11 @@
     </div>
 
     <div class="toggle-buttons">
-        <button mat-icon-button (click)="toggleShuffle($event)">
-            <mat-icon *ngIf="state.shuffle" color="warn" aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
-            <mat-icon *ngIf="!state.shuffle" color="accent" aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
+        <button mat-fab *ngIf="state.shuffle" color="primary"  (click)="toggleShuffle($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="!state.shuffle"  (click)="toggleShuffle($event)">
+            <mat-icon color="warn" aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
         </button>
 
         <button mat-icon-button (click)="toggleRepeat($event)">
