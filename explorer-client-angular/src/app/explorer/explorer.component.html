@@ -1,5 +1,11 @@
-<mat-list>
-  <mat-list-item *ngFor="let f of fileList" (click)="onItemClick($event, f)" >
+<div class="search-bar">
+  <mat-icon color="warn" aria-label="Search Icon">search</mat-icon>
+  <mat-form-field>
+    <input type="text" matInput [(ngModel)]="search" (keyup)="onSearchKeyUp($event)" >
+  </mat-form-field>
+</div>
+<mat-list #list >
+  <mat-list-item [ngClass]="{'selected': f.name === selectedFile.name}" *ngFor="let f of fileList" (click)="onItemClick($event, f)" >
     <button mat-button>{{ f.name }}</button>
   </mat-list-item>
 </mat-list>

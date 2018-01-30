@@ -1,6 +1,9 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <fex-explorer [fileList]="fileList" (fileClicked)="onFileClicked($event)" ></fex-explorer>
+    <fex-explorer [fileList]="fileList" 
+    (fileSearch)="onFileSeach($event)"
+    [seletectedFile]="selectedFile"    
+    (fileClicked)="onFileClicked($event)" ></fex-explorer>
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -10,7 +13,7 @@
     <fex-player 
     *ngIf="selectedFile"
     [state]="playerState"
-    [file]="selectedFile" 
+    [file]="selectedFile"
     (next)="skipNext($event)" 
     (previous)="skipPrevious($event)"
     (stateChanged)="onStateChanged($event)"

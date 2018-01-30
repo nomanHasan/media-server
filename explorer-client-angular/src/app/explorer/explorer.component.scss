@@ -1,0 +1,13 @@
+mat-list-item.selected {
+    background: linear-gradient(to right, #2337a7, #6179ff);
+    color: beige;
+}
+
+mat-form-field{
+    width: 90%;
+}
+
+mat-list{
+    height: 100vh;
+    overflow: auto;
+}

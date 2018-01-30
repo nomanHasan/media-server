@@ -2,7 +2,7 @@ import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { GestureConfig } from '@angular/material';
+import { GestureConfig, MatInputModule } from '@angular/material';
 import { MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, MatSliderModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatInputModule
   ],
   providers: [
     FileService,

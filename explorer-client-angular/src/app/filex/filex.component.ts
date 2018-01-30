@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FileService } from '../services/file.service';
 import { File } from '../models/file.model';
 import { DefaultPlayerState } from '../player/player-state.interface';
+import * as Fuse from 'fuse.js';
+
 
 @Component({ selector: 'fex-filex', templateUrl: './filex.component.html', styleUrls: ['./filex.component.scss'] })
 export class FilexComponent implements OnInit {
@@ -15,6 +17,10 @@ export class FilexComponent implements OnInit {
 
   previousIndexes: number[] = [];
 
+  options;
+  fuse;
+
+
   ngOnInit() {
 
     this
@@ -22,9 +28,31 @@ export class FilexComponent implements OnInit {
       .getFiles()
       .subscribe(res => {
         this.fileList = res;
+        console.log(this.fileList);
         this.selectedFile = this.shuffleNext();
         this.setPlayingFileSrc(this.selectedFile._id);
+
+
+
+        this.fuse = new Fuse(this.fileList, this.options);
+
+
+      console.log(this.fuse.search('Bry'));
+
       });
+
+      this.options = {
+        shouldSort: true,
+        threshold: 1,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [
+          'name',
+          'path'
+      ]
+      };
 
   }
 
@@ -87,6 +115,15 @@ export class FilexComponent implements OnInit {
 
   onStateChanged(event) {
     this.playerState = event;
+  }
+
+
+  onFileSeach(event) {
+    console.log(event);
+
+    this.fileList = this.fuse.search(event);
+
+
   }
 
 }
