@@ -30,13 +30,13 @@ export class ExplorerComponent implements OnInit {
     console.log(value, index);
 
 
-    // const matDrawer = document.querySelector('mat-drawer');
+    const matDrawer = document.querySelector('mat-list');
 
-    // if (!document.querySelector('mat-list-item')) { return; }
+    if (!document.querySelector('mat-list-item')) { return; }
 
-    // console.log(document.querySelector('mat-list-item'));
+    console.log(document.querySelector('mat-list-item'));
 
-    // matDrawer.scrollTop = 48 * index;
+    matDrawer.scrollTop = 48 * index;
 
 
   }
@@ -60,6 +60,7 @@ export class ExplorerComponent implements OnInit {
     .debounceTime(300)
     .distinctUntilChanged().subscribe(val => {
       this.fileSearch.emit(this.search);
+      document.querySelector('mat-list').scrollTop = 0;
     });
   }
 

@@ -37,7 +37,7 @@ export class FilexComponent implements OnInit {
         this.fuse = new Fuse(this.fileList, this.options);
 
 
-      console.log(this.fuse.search('Bry'));
+        console.log(this.fuse.search('Bry'));
 
       });
 
