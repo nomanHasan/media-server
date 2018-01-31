@@ -41,18 +41,18 @@ export class FilexComponent implements OnInit {
 
       });
 
-      this.options = {
-        shouldSort: true,
-        threshold: 1,
-        location: 0,
-        distance: 100,
-        maxPatternLength: 32,
-        minMatchCharLength: 1,
-        keys: [
-          'name',
-          'path'
+    this.options = {
+      shouldSort: true,
+      threshold: 1,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        'name',
+        'path'
       ]
-      };
+    };
 
   }
 
@@ -108,7 +108,7 @@ export class FilexComponent implements OnInit {
     }
 
 
-    console.log(this.previousIndexes, this.previousIndexes.slice(this.previousIndexes.length - 21, this.previousIndexes.length - 1));
+    // console.log(this.previousIndexes, this.previousIndexes.slice(this.previousIndexes.length - 21, this.previousIndexes.length - 1));
 
     return this.fileList[rand];
   }
@@ -119,9 +119,10 @@ export class FilexComponent implements OnInit {
 
 
   onFileSeach(event) {
-    console.log(event);
+    if (event.length > 0) {
+      this.fileList = this.fuse.search(event);
+    }
 
-    this.fileList = this.fuse.search(event);
 
 
   }
