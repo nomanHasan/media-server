@@ -1,23 +1,29 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <fex-explorer [fileList]="fileList" 
-    (fileSearch)="onFileSeach($event)"
-    [seletectedFile]="selectedFile"    
-    (fileClicked)="onFileClicked($event)" ></fex-explorer>
+
+    <mat-tab-group>
+      <mat-tab label="Tab 1">
+        <fex-explorer [fileList]="fileList" 
+        (fileSearch)="onFileSeach($event)" 
+        [seletectedFile]="selectedFile" 
+        (fileClicked)="onFileClicked($event)">
+        </fex-explorer>
+      </mat-tab>
+      <mat-tab label="Tab 2">Content 2</mat-tab>
+    </mat-tab-group>
+
   </mat-drawer>
 
   <div class="example-sidenav-content">
     <button type="button" mat-button (click)="drawer.toggle()">
       Explore
     </button>
-    <fex-player 
-    *ngIf="selectedFile"
-    [state]="playerState"
-    [file]="selectedFile"
+    <fex-player *ngIf="selectedFile" 
+    [state]="playerState" 
+    [file]="selectedFile" 
     (next)="skipNext($event)" 
     (previous)="skipPrevious($event)"
-    (stateChanged)="onStateChanged($event)"
-    ></fex-player>
+      (stateChanged)="onStateChanged($event)"></fex-player>
   </div>
 
 </mat-drawer-container>

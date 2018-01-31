@@ -2,11 +2,11 @@ const mongoURL = 'mongodb://127.0.0.1:27017/filex';
 var mongoose = require('mongoose');
 var File = require('./models/file');
 var filex = require('./filex');
-
+const readMetadata = require('./metadata');
 
 mongoose
     .connect(mongoURL)
-    .then(async () => {
+    .then(async() => {
         console.log(`Succesfully Connected to the Mongodb Database  at URL : ${mongoURL}`);
 
         await readFiles();
@@ -17,7 +17,6 @@ mongoose
     });
 
 require('dotenv').config();
-
 
 const readFiles = async function () {
     const fileList = filex.getFlattenedFiles(process.env.DEFAULT_DIRECTORY);
@@ -36,11 +35,18 @@ const readFiles = async function () {
         }
     }
 
-    mp3Files = mp3Files.map(f => {
+    mp3Files = await Promise.all(mp3Files.map(async f => {
+        const metadata = await readMetadata(f);
         return {
-            path: f, name: getName(fileNameExpression)(f)
+            path: f, name: getName(fileNameExpression)(f),
+            ...metadata
         }
-    })
+    }))
+
+    // var getMetadatas = mp3Files.map(f => {     return readMetadata(f.path); })
+    // const metadatas = await Promise.all(getMetadatas);
+
+    console.log(mp3Files);
 
     await File.remove();
 
