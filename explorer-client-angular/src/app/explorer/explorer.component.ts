@@ -16,61 +16,26 @@ import 'rxjs/add/operator/distinctUntilChanged';
 })
 export class ExplorerComponent implements OnInit {
 
-
-  @Input() fileList: File[] = [];
-
-  _selectedFile;
-
-  @Input() set seletectedFile(value: File) {
-    this._selectedFile = value;
-
-    if (!this.fileList) { return; }
-
-    const index = this.fileList.findIndex(f => f.name === value.name);
-    console.log(value, index);
-
-
-    const matDrawer = document.querySelector('mat-list');
-
-    if (!document.querySelector('mat-list-item')) { return; }
-
-    console.log(document.querySelector('mat-list-item'));
-
-    matDrawer.scrollTop = 48 * index;
-
-
-  }
-
-  get selectedFile() {
-    return this._selectedFile;
-  }
-
-  @Output() fileClicked = new EventEmitter<File>();
-  @Output() fileSearch = new EventEmitter<any>();
-
-  searchStream: Subject<any> = new Subject<any>();
-
-  search;
-
+  folders = [
+    {
+      name: 'Photos',
+      updated: new Date('1/1/16'),
+    },
+    {
+      name: 'Recipes',
+      updated: new Date('1/17/16'),
+    },
+    {
+      name: 'Work',
+      updated: new Date('1/28/16'),
+    }
+  ];
+  
   constructor() { }
 
   ngOnInit() {
 
-    this.searchStream
-    .debounceTime(300)
-    .distinctUntilChanged().subscribe(val => {
-      this.fileSearch.emit(this.search);
-      document.querySelector('mat-list').scrollTop = 0;
-    });
   }
 
-  onSearchKeyUp(event) {
-    this.searchStream.next(event);
-  }
-
-
-  onItemClick(event, f: File) {
-    this.fileClicked.emit(f);
-  }
 
 }

@@ -1,17 +1,11 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-
-    <mat-tab-group>
-      <mat-tab label="Tab 1">
-        <fex-explorer [fileList]="fileList" 
-        (fileSearch)="onFileSeach($event)" 
-        [seletectedFile]="selectedFile" 
+        <fex-sidenav 
+        [fileList]="fileList" 
+        (searched)="onFileSeach($event)" 
+        [selectedFile]="selectedFile" 
         (fileClicked)="onFileClicked($event)">
-        </fex-explorer>
-      </mat-tab>
-      <mat-tab label="Tab 2">Content 2</mat-tab>
-    </mat-tab-group>
-
+        </fex-sidenav>
   </mat-drawer>
 
   <div class="example-sidenav-content">

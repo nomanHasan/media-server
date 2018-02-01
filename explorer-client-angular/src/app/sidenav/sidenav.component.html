@@ -1,0 +1,26 @@
+<div class="search-bar">
+  <fex-search-bar 
+  (searched)="onSearch($event)">
+
+  </fex-search-bar>
+</div>
+
+
+<mat-tab-group>
+  <mat-tab label="Playlist">
+
+    <div class="playlist">
+      <fex-playlist 
+        [fileList]="fileList" 
+        [selectedFile]="selectedFile" 
+        (fileClicked)="onFileClicked($event)">
+      </fex-playlist>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="Explorer">
+    <fex-explorer>
+
+    </fex-explorer>
+  </mat-tab>
+</mat-tab-group>

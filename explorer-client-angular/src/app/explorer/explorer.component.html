@@ -1,11 +1,32 @@
-<div class="search-bar">
-  <mat-icon color="warn" aria-label="Search Icon">search</mat-icon>
-  <mat-form-field>
-    <input type="text" matInput [(ngModel)]="search" (keyup)="onSearchKeyUp($event)" >
-  </mat-form-field>
-</div>
-<mat-list #list >
-  <mat-list-item [ngClass]="{'selected': f.name === selectedFile.name}" *ngFor="let f of fileList" (click)="onItemClick($event, f)" >
-    <button mat-button>{{ f.name }}</button>
-  </mat-list-item>
-</mat-list>
+<mat-tab-group>
+  <mat-tab label="Artist">
+      <mat-selection-list>
+          <mat-list-option *ngFor="let folder of folders">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>{{folder.name}}</h4>
+            <p mat-line> {{folder.updated | date}} </p>
+          </mat-list-option>
+        </mat-selection-list>
+        
+  </mat-tab>
+  <mat-tab label="Album">
+      <mat-selection-list>
+          <mat-list-option *ngFor="let folder of folders">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>{{folder.name}}</h4>
+            <p mat-line> {{folder.updated | date}} </p>
+          </mat-list-option>
+        </mat-selection-list>
+        
+  </mat-tab>
+  <mat-tab label="Genre">
+      <mat-selection-list>
+          <mat-list-option *ngFor="let folder of folders">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>{{folder.name}}</h4>
+            <p mat-line> {{folder.updated | date}} </p>
+          </mat-list-option>
+        </mat-selection-list>
+        
+  </mat-tab>
+</mat-tab-group>

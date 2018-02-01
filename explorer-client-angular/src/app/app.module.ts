@@ -14,6 +14,9 @@ import { FilexComponent } from './filex/filex.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FileService } from './services/file.service';
 import { FormsModule } from '@angular/forms';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     ExplorerComponent,
     PlayerComponent,
-    FilexComponent
+    FilexComponent,
+    SidenavComponent,
+    SearchBarComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,

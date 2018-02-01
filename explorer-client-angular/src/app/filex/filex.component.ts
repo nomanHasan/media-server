@@ -119,6 +119,8 @@ export class FilexComponent implements OnInit {
 
 
   onFileSeach(event) {
+
+    console.log(event);
     if (event.length > 0) {
       this.fileList = this.fuse.search(event);
     }
