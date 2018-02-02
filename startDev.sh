@@ -1,5 +1,5 @@
 sudo service mongod start
-gnome-terminal --tab -e 'npm start --prefix ./explorer-server/' \
-                --tab -e 'code ./explorer-server/' \
-                --tab -e 'code ./explorer-client-angular/' \
-                --tab -e 'npm start --prefix ./explorer-client-angular/'
+gnome-terminal --tab -e 'npm start --prefix ./media-server-api/' \
+                --tab -e 'code ./media-server-api/' \
+                --tab -e 'code ./media-server-ui/' \
+                --tab -e 'npm start --prefix ./media-server-ui/'

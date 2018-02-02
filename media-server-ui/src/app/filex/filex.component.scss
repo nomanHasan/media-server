@@ -1,0 +1,24 @@
+.example-container{
+    height: 100vh;
+}
+
+.example-sidenav {
+    width: 35%;
+}
+
+mat-drawer {
+    background: #eacda3;
+    background: -webkit-gradient(linear, left top, right top, from(#d6ae7b), to(#eacda3));
+    background: linear-gradient(to right, #ffe3c0, #cfdef3);
+
+    overflow: hidden;
+}
+
+mat-drawer-container{
+    margin: -8px;
+    
+    background: #eacda3;
+    background: -webkit-gradient(linear, left top, right top, from(#d6ae7b), to(#eacda3));
+    background: linear-gradient(to right, #ffe3c0, #cfdef3);
+
+}

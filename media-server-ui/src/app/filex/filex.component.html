@@ -1,0 +1,23 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+        <ms-sidenav 
+        [fileList]="fileList" 
+        (searched)="onFileSeach($event)" 
+        [selectedFile]="selectedFile" 
+        (fileClicked)="onFileClicked($event)">
+        </ms-sidenav>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Explore
+    </button>
+    <ms-player *ngIf="selectedFile" 
+    [state]="playerState" 
+    [file]="selectedFile" 
+    (next)="skipNext($event)" 
+    (previous)="skipPrevious($event)"
+      (stateChanged)="onStateChanged($event)"></ms-player>
+  </div>
+
+</mat-drawer-container>

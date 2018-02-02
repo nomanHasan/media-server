@@ -1,0 +1,26 @@
+<div class="search-bar">
+  <ms-search-bar 
+  (searched)="onSearch($event)">
+
+  </ms-search-bar>
+</div>
+
+
+<mat-tab-group>
+  <mat-tab label="Playlist">
+
+    <div class="playlist">
+      <ms-playlist 
+        [fileList]="fileList" 
+        [selectedFile]="selectedFile" 
+        (fileClicked)="onFileClicked($event)">
+      </ms-playlist>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="Explorer">
+    <ms-explorer>
+
+    </ms-explorer>
+  </mat-tab>
+</mat-tab-group>

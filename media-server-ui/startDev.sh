@@ -1,0 +1,2 @@
+code .
+npm run start
