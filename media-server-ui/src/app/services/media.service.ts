@@ -12,19 +12,23 @@ export class MediaService {
   ) { }
 
   API_URL = environment.api_url;
-  FILE_URL = `${this.API_URL}/api/files/`;
+  FILE_URL = `${this.API_URL}/files/`;
 
 
-  TRACKS_URL = `${this.API_URL}/api/tracks/`;
-  ARTISTS_URL = `${this.API_URL}/api/artists/`;
-  ALBUM_URL = `${this.API_URL}/api/albums/`;
-  GENRES_URL = `${this.API_URL}/api/genres/`;
+  TRACKS_URL = `${this.API_URL}/tracks/`;
+  ARTISTS_URL = `${this.API_URL}/artists/`;
+  ALBUM_URL = `${this.API_URL}/albums/`;
+  GENRES_URL = `${this.API_URL}/genres/`;
 
-  QUERY_URL = `${this.API_URL}/api/tracks/query`;
+  QUERY_URL = `${this.API_URL}/tracks/query`;
 
 
   getTracks(): Observable<any> {
     return this.httpClient.get(this.TRACKS_URL);
+  }
+
+  getTrackByTab(name): Observable<any> {
+    return this.httpClient.get(`${this.API_URL}/${name}/`);
   }
 
   getArtists(): Observable<any> {

@@ -20,7 +20,8 @@
   </mat-tab>
   <mat-tab label="Explorer">
     <ms-explorer
-    [explorerPlaylist]="explorerPlaylist"
+    [folderData]="folderData"
+    (folderAction)="onFolderAction($event)"
     (selected)="onFolderSelected($event)"
     >
 

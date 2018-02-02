@@ -4,7 +4,8 @@
         [fileList]="fileList" 
         (searched)="onFileSeach($event)" 
         [selectedFile]="selectedFile"
-        [explorerPlaylist]="explorerPlaylist"
+        [folderData]="folderData"
+        (folderAction)="onFolderAction($event)"
         (fileClicked)="onFileClicked($event)"
         (folderClicked)="onFolderClicked($event)"
         >

@@ -1,28 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { MediaService } from '../services/media.service';
-import { File } from '../models/file.model';
-import { DefaultPlayerState } from '../player/player-state.interface';
+import {Component, OnInit} from '@angular/core';
+import {MediaService} from '../services/media.service';
+import {File} from '../models/file.model';
+import {DefaultPlayerState} from '../player/player-state.interface';
 import * as Fuse from 'fuse.js';
 
-
-@Component({ selector: 'ms-filex', templateUrl: './filex.component.html', styleUrls: ['./filex.component.scss'] })
+@Component({selector: 'ms-filex', templateUrl: './filex.component.html', styleUrls: ['./filex.component.scss']})
 export class FilexComponent implements OnInit {
 
-  constructor(private mediaService: MediaService) { }
+  constructor(private mediaService : MediaService) {}
 
-  fileList: File[];
-  selectedFile: File;
+  fileList : File[];
+  selectedFile : File;
 
   playerState = DefaultPlayerState;
 
-  previousIndexes: number[] = [];
+  previousIndexes : number[] = [];
 
   options;
   fuse;
   sidenavOpen = true;
 
-  explorerPlaylist;
-
+  folderData : any = {};
 
   ngOnInit() {
 
@@ -30,6 +28,7 @@ export class FilexComponent implements OnInit {
       .mediaService
       .getTracks()
       .subscribe(res => {
+        console.log(res);
         this.setPlayList(res.docs);
 
       });
@@ -41,15 +40,17 @@ export class FilexComponent implements OnInit {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: [
-        'name',
-        'path'
-      ]
+      keys: ['name', 'path']
     };
 
   }
 
   setPlayList(list) {
+
+    if (list.length <= 0) {
+      return;
+    }
+
     this.fileList = list;
     this.selectedFile = this.shuffleNext();
     this.setPlayingFileSrc(this.selectedFile._id);
@@ -57,7 +58,7 @@ export class FilexComponent implements OnInit {
     this.fuse = new Fuse(this.fileList, this.options);
   }
 
-  onFileClicked(file: File) {
+  onFileClicked(file : File) {
     this.selectedFile = file;
     this.setPlayingFileSrc(file._id);
   }
@@ -100,17 +101,24 @@ export class FilexComponent implements OnInit {
 
   shuffleNext() {
     // debugger;
-    const rand = Math.floor(Math.random() * this.fileList.length );
+    const rand = Math.floor(Math.random() * this.fileList.length);
 
     if (this.previousIndexes.length > 20) {
-      this.previousIndexes.push(rand);
-      this.previousIndexes = this.previousIndexes.slice(this.previousIndexes.length - 21, this.previousIndexes.length - 1);
+      this
+        .previousIndexes
+        .push(rand);
+      this.previousIndexes = this
+        .previousIndexes
+        .slice(this.previousIndexes.length - 21, this.previousIndexes.length - 1);
     } else {
-      this.previousIndexes.push(rand);
+      this
+        .previousIndexes
+        .push(rand);
     }
 
-
-    // console.log(this.previousIndexes, this.previousIndexes.slice(this.previousIndexes.length - 21, this.previousIndexes.length - 1));
+    // console.log(this.previousIndexes,
+    // this.previousIndexes.slice(this.previousIndexes.length - 21,
+    // this.previousIndexes.length - 1));
 
     return this.fileList[rand];
   }
@@ -119,18 +127,43 @@ export class FilexComponent implements OnInit {
     this.playerState = event;
   }
 
-
   onFileSeach(event) {
     if (event.length > 0) {
-      this.fileList = this.fuse.search(event);
+      this.fileList = this
+        .fuse
+        .search(event);
     }
   }
 
   onFolderClicked(event) {
     console.log(event);
-    this.mediaService.getTrackBySingleQuery(event).subscribe(res => {
-      this.explorerPlaylist = res.docs;
-    });
+    this
+      .mediaService
+      .getTrackBySingleQuery(event)
+      .subscribe(res => {
+        this.folderData.list = res.docs;
+        this.folderData.name = event.value;
+        this.folderData.field = event.field;
+        console.log(this.folderData);
+      });
+  }
+
+  onFolderAction(event) {
+    console.log(event);
+    switch (event.type) {
+      case 'play-folder': {
+          this
+            .mediaService
+            .getTrackBySingleQuery({field: event.data.field, value: event.data.name[0]})
+            .subscribe(res => {
+              this.setPlayList(res.docs);
+            });
+            break;
+        }
+        case 'play-item': {
+          this.setPlayList([event.data]);
+        }
+    }
   }
 
 }

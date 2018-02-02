@@ -11,10 +11,11 @@ export class SidenavComponent implements OnInit {
 
   @Input() selectedFile;
   @Input() fileList;
-  @Input() explorerPlaylist;
+  @Input() folderData;
   @Output() fileClicked = new EventEmitter<any>();
   @Output() searched = new EventEmitter<any>();
   @Output() folderClicked = new EventEmitter<any>();
+  @Output() folderAction = new EventEmitter<any>();
 
 
   constructor() { }
@@ -34,6 +35,10 @@ export class SidenavComponent implements OnInit {
 
   onFolderSelected(event) {
     this.folderClicked.emit(event);
+  }
+
+  onFolderAction(event) {
+    this.folderAction.emit(event);
   }
 
 }

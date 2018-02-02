@@ -1,0 +1,16 @@
+<mat-card class="folder-content" >
+  <mat-list>
+    <div class="header">
+      <h3> {{folderData.name}} </h3>
+      <button mat-raised-button (click)="onClick($event)" >Play</button>
+    </div>
+    <mat-list-item *ngFor="let e of folderData.list"
+      (click)="onItemClick(e)"
+    >
+      <div class="folder-item">
+        <p class="title"> {{e.title}} </p>
+        <p class="duration"> {{e.duration}} </p>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

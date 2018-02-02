@@ -1,14 +1,14 @@
 <mat-tab-group>
-  <mat-tab label="Artist">
+  <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
     <mat-list>
-      <h3 mat-subheader>Artist</h3>
-      <mat-list-item (click)="onClick('artist', artist._id)" *ngFor="let artist of artists">
-        <mat-icon mat-list-icon>people</mat-icon>
-        <h4 mat-line>{{artist._id}}</h4>
+      <h3 mat-subheader> {{tab.label}} </h3>
+      <mat-list-item (click)="onClick(tab.name, entry._id)" *ngFor="let entry of tab.entries">
+        <mat-icon mat-list-icon> {{tab.icon}} </mat-icon>
+        <h4 mat-line>{{entry._id}}</h4>
       </mat-list-item>
     </mat-list>
   </mat-tab>
-  <mat-tab label="Album">
+  <!-- <mat-tab label="Album">
     <mat-list>
       <h3 mat-subheader>Album</h3>
       <mat-list-item (click)="onClick('album', album._id)" *ngFor="let album of albums">
@@ -25,13 +25,13 @@
         <h4 mat-line>{{genre._id}}</h4>
       </mat-list-item>
     </mat-list>
-  </mat-tab>
+  </mat-tab> -->
 </mat-tab-group>
 
-<mat-card *ngIf="explorerPlaylist" class="folder-content" >
-  <mat-list>
-    <mat-list-item *ngFor="let e of explorerPlaylist">
-      <p> {{e.title}} </p>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+<ms-folder-content
+*ngIf="folderData && folderData.name"
+[folderData]="folderData"
+(folderAction)="onFolderAction($event)"
+>
+
+</ms-folder-content>

@@ -8,7 +8,7 @@ import {
   Output
 } from '@angular/core';
 import {ElementRef} from '@angular/core';
-import {File} from '../models/file.model';
+import {File} from '../../models/file.model';
 import { IPlayerState, RepeatModes, toggleRepeatModes, DefaultPlayerState } from './player-state.interface';
 
 

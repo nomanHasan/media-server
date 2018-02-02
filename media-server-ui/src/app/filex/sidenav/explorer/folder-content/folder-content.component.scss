@@ -1,0 +1,47 @@
+:host{
+    position: absolute;
+    top: 51px;
+    right: 20px;
+    width: 50%;
+    height: calc(100vh - 222px);
+    z-index: 99;
+}
+
+.folder-item{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
+    p.title{
+        flex: 5;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    p.duration{
+        flex: 1;
+        text-align: right;
+    }
+}
+
+mat-list{
+    height: calc( 100vh - 300px);
+}
+
+
+.header{
+    display: flex;
+    flex-direction: row;
+    h3{
+        flex: 5;
+    }
+    button{
+        flex: 1;
+        height: 39px;
+        margin-top: auto;
+        color: white;
+        margin-bottom: auto;
+        background-color: #518fff;
+    }
+}

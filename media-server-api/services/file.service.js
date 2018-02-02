@@ -3,7 +3,7 @@ var filex = require('../filex');
 
 _this = this;
 
-const selectFields = 'name title artist album year'
+const selectFields = 'name title artist album year duration path'
 
 exports.getFiles  = async (page = 1, limit = 0) => {
 
