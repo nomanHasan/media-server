@@ -11,6 +11,7 @@ export class PlaylistComponent implements OnInit {
 
   @Input() fileList: File[] = [];
 
+
   _selectedFile;
 
   @Input() set selectedFile(value: File) {
@@ -43,9 +44,9 @@ export class PlaylistComponent implements OnInit {
 
 
   scrollToSelected(index) {
-    const matDrawer = document.querySelector('mat-list');
+    const matDrawer = document.querySelector('#playlist-list');
 
-    if (!document.querySelector('mat-list-item')) { return; }
+    if (!document.querySelector('mat-list-item') || !matDrawer) { return; }
 
     matDrawer.scrollTop = 48 * index;
   }

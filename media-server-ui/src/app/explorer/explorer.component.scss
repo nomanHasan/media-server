@@ -1,3 +1,16 @@
 mat-form-field{
     width: 90%;
 }
+
+mat-list{
+    height: calc(100vh - 167px);
+}
+
+.folder-content {
+    position: absolute;
+    top: 51px;
+    right: 20px;
+    width: 50%;
+    height: calc(100vh - 222px);
+    z-index: 99;
+}

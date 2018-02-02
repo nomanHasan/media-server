@@ -1,3 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto|Supermercado+One');
+
+
+mat-list{
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+mat-list-item.mat-list-item.ng-star-inserted:hover {
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.231);
+}

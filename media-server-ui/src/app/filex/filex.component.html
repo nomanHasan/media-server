@@ -1,10 +1,13 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+  <mat-drawer #drawer class="example-sidenav" [opened]="sidenavOpen" mode="side">
         <ms-sidenav 
         [fileList]="fileList" 
         (searched)="onFileSeach($event)" 
-        [selectedFile]="selectedFile" 
-        (fileClicked)="onFileClicked($event)">
+        [selectedFile]="selectedFile"
+        [explorerPlaylist]="explorerPlaylist"
+        (fileClicked)="onFileClicked($event)"
+        (folderClicked)="onFolderClicked($event)"
+        >
         </ms-sidenav>
   </mat-drawer>
 

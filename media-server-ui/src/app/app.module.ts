@@ -2,7 +2,7 @@ import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { GestureConfig, MatInputModule, MatTabsModule, MatExpansionModule } from '@angular/material';
+import { GestureConfig, MatInputModule, MatTabsModule, MatExpansionModule, MatCardModule } from '@angular/material';
 import { MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, MatSliderModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,7 +43,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
     MatSliderModule,
     MatInputModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule
   ],
   providers: [
     MediaService,

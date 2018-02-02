@@ -17,20 +17,7 @@ import { MediaService } from '../services/media.service';
 })
 export class ExplorerComponent implements OnInit {
 
-  folders = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    }
-  ];
+  @Input() explorerPlaylist;
 
   artists;
   albums;
@@ -39,6 +26,8 @@ export class ExplorerComponent implements OnInit {
   constructor(
     private mediaService: MediaService
   ) { }
+
+  @Output() selected = new EventEmitter<any>();
 
   ngOnInit() {
 
@@ -54,5 +43,11 @@ export class ExplorerComponent implements OnInit {
 
   }
 
+  onClick(field, value) {
+    this.selected.emit({
+      field: field,
+      value: value
+    });
+  }
 
 }

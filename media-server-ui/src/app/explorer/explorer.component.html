@@ -1,101 +1,37 @@
 <mat-tab-group>
   <mat-tab label="Artist">
-    <mat-accordion *ngIf="artists">
-      <mat-expansion-panel *ngFor="let artist of artists" >
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{artist._id}}
-          </mat-panel-title>
-          <mat-panel-description>
-            Type your name and age
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Self aware panel
-          </mat-panel-title>
-          <mat-panel-description>
-            Currently I am {{panelOpenState ? 'open' : 'closed'}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>
-    
-        
+    <mat-list>
+      <h3 mat-subheader>Artist</h3>
+      <mat-list-item (click)="onClick('artist', artist._id)" *ngFor="let artist of artists">
+        <mat-icon mat-list-icon>people</mat-icon>
+        <h4 mat-line>{{artist._id}}</h4>
+      </mat-list-item>
+    </mat-list>
   </mat-tab>
   <mat-tab label="Album">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Personal data
-          </mat-panel-title>
-          <mat-panel-description>
-            Type your name and age
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Self aware panel
-          </mat-panel-title>
-          <mat-panel-description>
-            Currently I am {{panelOpenState ? 'open' : 'closed'}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>
-    
-        
+    <mat-list>
+      <h3 mat-subheader>Album</h3>
+      <mat-list-item (click)="onClick('album', album._id)" *ngFor="let album of albums">
+        <mat-icon mat-list-icon>album</mat-icon>
+        <h4 mat-line>{{album._id}}</h4>
+      </mat-list-item>
+    </mat-list>      
   </mat-tab>
   <mat-tab label="Genre">
-    <mat-accordion>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Personal data
-          </mat-panel-title>
-          <mat-panel-description>
-            Type your name and age
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-    
-        <mat-form-field>
-          <input matInput placeholder="First name">
-        </mat-form-field>
-    
-        <mat-form-field>
-          <input matInput placeholder="Age">
-        </mat-form-field>
-      </mat-expansion-panel>
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Self aware panel
-          </mat-panel-title>
-          <mat-panel-description>
-            Currently I am {{panelOpenState ? 'open' : 'closed'}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <p>I'm visible because I am open</p>
-      </mat-expansion-panel>
-    </mat-accordion>
-    
+    <mat-list>
+      <h3 mat-subheader>Genres</h3>
+      <mat-list-item (click)="onClick('genre', genre._id)" *ngFor="let genre of genres">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{genre._id}}</h4>
+      </mat-list-item>
+    </mat-list>
   </mat-tab>
 </mat-tab-group>
+
+<mat-card *ngIf="explorerPlaylist" class="folder-content" >
+  <mat-list>
+    <mat-list-item *ngFor="let e of explorerPlaylist">
+      <p> {{e.title}} </p>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
