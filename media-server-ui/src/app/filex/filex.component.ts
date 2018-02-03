@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MediaService} from '../services/media.service';
 import {File} from '../models/file.model';
-import {DefaultPlayerState} from '../player/player-state.interface';
+import {DefaultPlayerState} from './player/player-state.interface';
 import * as Fuse from 'fuse.js';
 
 @Component({selector: 'ms-filex', templateUrl: './filex.component.html', styleUrls: ['./filex.component.scss']})

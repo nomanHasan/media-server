@@ -1,4 +1,7 @@
 <mat-tab-group>
+  <mat-tab label="Tracks">
+
+  </mat-tab>
   <mat-tab *ngFor="let tab of tabs" [label]="tab.label">
     <mat-list>
       <h3 mat-subheader> {{tab.label}} </h3>
@@ -8,6 +11,13 @@
       </mat-list-item>
     </mat-list>
   </mat-tab>
+  <mat-tab label="Folders">
+
+    </mat-tab>
+  <mat-tab label="Playlists">
+
+  </mat-tab>
+  
   <!-- <mat-tab label="Album">
     <mat-list>
       <h3 mat-subheader>Album</h3>
@@ -28,10 +38,6 @@
   </mat-tab> -->
 </mat-tab-group>
 
-<ms-folder-content
-*ngIf="folderData && folderData.name"
-[folderData]="folderData"
-(folderAction)="onFolderAction($event)"
->
+<ms-folder-content *ngIf="folderData && folderData.name" [folderData]="folderData" (folderAction)="onFolderAction($event)">
 
 </ms-folder-content>
