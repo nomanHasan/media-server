@@ -6,7 +6,16 @@
 </div>
 
 
-<mat-tab-group>
+<mat-tab-group>  
+  <mat-tab label="Explorer" >
+    <ms-explorer
+    [folderData]="folderData"
+    (folderAction)="onFolderAction($event)"
+    (selected)="onFolderSelected($event)"
+    >
+
+    </ms-explorer>
+  </mat-tab>
   <mat-tab label="Playlist">
 
     <div class="playlist">
@@ -18,13 +27,5 @@
     </div>
 
   </mat-tab>
-  <mat-tab label="Explorer">
-    <ms-explorer
-    [folderData]="folderData"
-    (folderAction)="onFolderAction($event)"
-    (selected)="onFolderSelected($event)"
-    >
 
-    </ms-explorer>
-  </mat-tab>
 </mat-tab-group>

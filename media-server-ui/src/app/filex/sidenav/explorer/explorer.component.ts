@@ -14,7 +14,7 @@ export class ExplorerComponent implements OnInit {
 
   @Input() folderData;
   @Output() folderAction = new EventEmitter<any>();
-  @Output()selected = new EventEmitter < any > ();
+  @Output() selected = new EventEmitter < any > ();
 
   tabs: ITab[] = [
     {

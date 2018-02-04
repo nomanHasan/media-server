@@ -19,6 +19,7 @@ export class MediaService {
   ARTISTS_URL = `${this.API_URL}/artists/`;
   ALBUM_URL = `${this.API_URL}/albums/`;
   GENRES_URL = `${this.API_URL}/genres/`;
+  FOLDERS_URL = `${this.API_URL}/folders`;
 
   QUERY_URL = `${this.API_URL}/tracks/query`;
 
@@ -65,6 +66,10 @@ export class MediaService {
     return this.httpClient.get(this.QUERY_URL, {
       params: new HttpParams().set('genre', genre)
     });
+  }
+
+  getRootFolder(): Observable<any> {
+    return this.httpClient.get(this.FOLDERS_URL);
   }
 
 

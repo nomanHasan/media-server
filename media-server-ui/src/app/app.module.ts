@@ -18,6 +18,7 @@ import { SidenavComponent } from './filex/sidenav/sidenav.component';
 import { SearchBarComponent } from './filex/sidenav/search-bar/search-bar.component';
 import { PlaylistComponent } from './filex/sidenav/playlist/playlist.component';
 import { FolderContentComponent } from './filex/sidenav/explorer/folder-content/folder-content.component';
+import { FolderComponent } from './filex/sidenav/explorer/folder/folder.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FolderContentComponent } from './filex/sidenav/explorer/folder-content/
     SidenavComponent,
     SearchBarComponent,
     PlaylistComponent,
-    FolderContentComponent
+    FolderContentComponent,
+    FolderComponent
   ],
   imports: [
     BrowserModule,

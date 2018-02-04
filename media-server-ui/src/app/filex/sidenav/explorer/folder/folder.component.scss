@@ -1,0 +1,23 @@
+.folder-container{
+    height: calc(100vh - 212px);
+}
+.folder-item-list{
+    height: calc(100vh - 282px);
+}
+
+mat-card-title{
+    display: flex;
+    justify-content: space-between;
+
+    .right{
+        button{
+            flex: 1;
+            height: 39px;
+            margin-top: auto;
+            color: white;
+            margin-bottom: auto;
+            background-color: #518fff;
+        }
+    }
+}
+

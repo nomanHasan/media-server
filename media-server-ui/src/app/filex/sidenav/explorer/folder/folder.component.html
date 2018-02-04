@@ -1,0 +1,33 @@
+<mat-card class="folder-container" >
+    <mat-card-title>
+      <div class="left">
+          {{folderData.name}}
+      </div>
+      <div class="right">
+          <button mat-raised-button (click)="onClick($event)" >Play</button>
+      </div>
+
+    </mat-card-title>
+    
+    <mat-list class="folder-item-list" >
+    <mat-list-item *ngFor="let e of folderData.folders"
+      (click)="onItemClick(e)"
+    >
+    <mat-icon mat-list-icon>folder</mat-icon>
+      <div class="folder-item">
+        <p class="title"> {{e.name}} </p>
+      </div>
+    </mat-list-item>
+    <mat-list-item *ngFor="let e of folderData.files"
+      (click)="onItemClick(e)"
+    >
+    <mat-icon mat-list-icon>audio</mat-icon>
+      <div class="folder-item">
+        <p class="title"> {{e.title || e.name }} </p>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+
+
+</mat-card>

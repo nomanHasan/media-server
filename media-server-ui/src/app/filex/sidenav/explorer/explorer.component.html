@@ -1,4 +1,11 @@
 <mat-tab-group>
+    <mat-tab label="Folders" isActive="true">
+      <ms-folder
+        [folderData]="folderData"
+        (folderAction)="onFolderAction($event)"
+      ></ms-folder>
+    </mat-tab>
+    
   <mat-tab label="Tracks">
 
   </mat-tab>
@@ -11,9 +18,7 @@
       </mat-list-item>
     </mat-list>
   </mat-tab>
-  <mat-tab label="Folders">
-
-    </mat-tab>
+  
   <mat-tab label="Playlists">
 
   </mat-tab>
@@ -38,6 +43,8 @@
   </mat-tab> -->
 </mat-tab-group>
 
-<ms-folder-content *ngIf="folderData && folderData.name" [folderData]="folderData" (folderAction)="onFolderAction($event)">
 
-</ms-folder-content>
+<!-- <ms-folder-content *ngIf="folderData && folderData.name" [folderData]="folderData" 
+  (folderAction)="onFolderAction($event)">
+
+</ms-folder-content> -->

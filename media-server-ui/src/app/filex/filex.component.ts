@@ -43,6 +43,11 @@ export class FilexComponent implements OnInit {
       keys: ['name', 'path']
     };
 
+    this.mediaService.getRootFolder().subscribe(res => {
+      this.folderData = res;
+      console.log(this.folderData);
+    });
+
   }
 
   setPlayList(list) {
