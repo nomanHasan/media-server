@@ -1,27 +1,41 @@
-<mat-card class="folder-container" >
-    <mat-card-title>
-      <div class="left">
-          {{folderData.name}}
+<mat-card class="folder-container">
+  <mat-card-title>
+    <div class="folder-header">
+      <div class="nav-buttons">
+        <button mat-mini-fab
+        (click)="onNavigationBack($event)"
+        >
+          <mat-icon aria-label="Example icon-button with a heart icon">keyboard_arrow_left</mat-icon>
+        </button>
+        <button mat-mini-fab
+        (click)="onNavigationForward($event)"
+        
+        >
+          <mat-icon aria-label="Example icon-button with a heart icon">keyboard_arrow_right</mat-icon>
+        </button>
       </div>
-      <div class="right">
-          <button mat-raised-button (click)="onClick($event)" >Play</button>
+      <div class="path">
+        <div class="folder" *ngFor="let f of folderNavHistory">
+          {{f.name}}
+        </div>
+        <!-- {{folderData.name}} -->
       </div>
+      <div class="options">
+        <button mat-raised-button (click)="onClick($event)">Play</button>
+      </div>
+    </div>
 
-    </mat-card-title>
-    
-    <mat-list class="folder-item-list" >
-    <mat-list-item *ngFor="let e of folderData.folders"
-      (click)="onItemClick(e)"
-    >
-    <mat-icon mat-list-icon>folder</mat-icon>
+  </mat-card-title>
+
+  <mat-list class="folder-item-list">
+    <mat-list-item *ngFor="let e of folderData.folders" (click)="onFolderClick(e)">
+      <mat-icon mat-list-icon>folder</mat-icon>
       <div class="folder-item">
         <p class="title"> {{e.name}} </p>
       </div>
     </mat-list-item>
-    <mat-list-item *ngFor="let e of folderData.files"
-      (click)="onItemClick(e)"
-    >
-    <mat-icon mat-list-icon>audio</mat-icon>
+    <mat-list-item *ngFor="let e of folderData.files" (click)="onItemClick(e)">
+      <mat-icon mat-list-icon>audiotrack</mat-icon>
       <div class="folder-item">
         <p class="title"> {{e.title || e.name }} </p>
       </div>

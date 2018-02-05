@@ -37,6 +37,8 @@ export class ExplorerComponent implements OnInit {
     }
   ];
 
+  selectedIndex;
+
   constructor(private mediaService: MediaService) {}
 
 
@@ -57,6 +59,10 @@ export class ExplorerComponent implements OnInit {
 
   onFolderAction(event) {
     this.folderAction.emit(event);
+  }
+
+  onTabSelectedIndexChange(event) {
+    this.selectedIndex = event;
   }
 
 }

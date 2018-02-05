@@ -35,8 +35,8 @@ div.player {
     font-family: 'Lato', sans-serif;
 
     background: #E0EAFC;
-    background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);
-    background: linear-gradient(to right, #CFDEF3, #E0EAFC);
+    background: -webkit-gradient(linear, left top, right top, from(#fff8f8), to(#edfff4));
+    background: linear-gradient(to right, #fefff3, #faffed);
 
     div{
         margin: 15px; 
@@ -56,6 +56,9 @@ div.player {
     }
 
 
+}
+.mat-fab.mat-primary{
+    background-color: #518fff;
 }
 
 .seeker {

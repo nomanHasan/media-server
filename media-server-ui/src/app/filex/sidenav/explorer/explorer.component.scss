@@ -14,3 +14,8 @@ mat-list{
     height: calc(100vh - 222px);
     z-index: 99;
 }
+
+mat-card{
+    background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#feffed));
+    background: linear-gradient(to right, #ffffff, #feffed);
+}

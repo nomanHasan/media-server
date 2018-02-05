@@ -1,7 +1,8 @@
-<mat-tab-group>
+<mat-tab-group
+(selectedIndexChange)="onTabSelectedIndexChange($event)"
+>
     <mat-tab label="Folders" isActive="true">
       <ms-folder
-        [folderData]="folderData"
         (folderAction)="onFolderAction($event)"
       ></ms-folder>
     </mat-tab>
@@ -44,7 +45,7 @@
 </mat-tab-group>
 
 
-<!-- <ms-folder-content *ngIf="folderData && folderData.name" [folderData]="folderData" 
+<ms-folder-content *ngIf="folderData && folderData.name && selectedIndex > 1" [folderData]="folderData" 
   (folderAction)="onFolderAction($event)">
 
-</ms-folder-content> -->
+</ms-folder-content>

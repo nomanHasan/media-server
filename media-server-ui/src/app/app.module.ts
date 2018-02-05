@@ -19,6 +19,7 @@ import { SearchBarComponent } from './filex/sidenav/search-bar/search-bar.compon
 import { PlaylistComponent } from './filex/sidenav/playlist/playlist.component';
 import { FolderContentComponent } from './filex/sidenav/explorer/folder-content/folder-content.component';
 import { FolderComponent } from './filex/sidenav/explorer/folder/folder.component';
+import { FolderService } from './services/folder.service';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { FolderComponent } from './filex/sidenav/explorer/folder/folder.componen
   ],
   providers: [
     MediaService,
+    FolderService,
     { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }
   ],
   bootstrap: [AppComponent]

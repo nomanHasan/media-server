@@ -9,15 +9,59 @@ mat-card-title{
     display: flex;
     justify-content: space-between;
 
-    .right{
-        button{
+    .folder-header{
+
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        width: 100%;
+
+        .nav-buttons{
             flex: 1;
-            height: 39px;
-            margin-top: auto;
-            color: white;
-            margin-bottom: auto;
-            background-color: #518fff;
         }
+
+        .path{
+            margin: 10px;
+            flex: 4;
+            font-size: 16px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            .folder{
+                padding: 5px;
+                width: 100px;
+                max-height: 20px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                border: 1px solid #518efc;
+            }
+        }
+
+        .options{
+            margin-right: 0px;
+            margin-left: auto;
+            flex: 1;
+
+            
+
+        } 
+
+        
     }
 }
 
+.mat-mini-fab.mat-accent, button {
+    flex: 1;
+    height: 39px;
+    margin-top: auto;
+    color: white;
+    margin-bottom: auto;
+    background-color: #518fff;
+}
+
+mat-card{
+    background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#feffed));
+    background: linear-gradient(to right, #ffffff, #feffed);
+}
