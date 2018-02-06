@@ -36,6 +36,11 @@ mat-card-title{
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 border: 1px solid #518efc;
+
+                &.current {
+                    background: #518efc;
+                    color: white;
+                }
             }
         }
 

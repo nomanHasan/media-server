@@ -15,7 +15,7 @@
         </button>
       </div>
       <div class="path">
-        <div class="folder" *ngFor="let f of folderNavHistory">
+        <div class="folder" [ngClass]="{'current': i === folderNavIndex}" (click)="onNavHistoryClick(f)" *ngFor="let f of folderNavHistory; let i = index"  >
           {{f.name}}
         </div>
         <!-- {{folderData.name}} -->

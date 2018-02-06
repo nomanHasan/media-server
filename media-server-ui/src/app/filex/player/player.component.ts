@@ -167,4 +167,16 @@ export class PlayerComponent implements OnInit {
     this.stateChanged.emit(this.state);
   }
 
+  get imageBackground() {
+    let url;
+
+    if (this.file && this.file.picture && this.file.picture[0] && this.file.picture[0].data) {
+      url = 'url(data:image/png;base64,' + this.file.picture[0].data + ') center center no-repeat ';
+    } else {
+      url = 'url("/assets/images/music.svg") center center no-repeat ';
+    }
+    return url;
+
+  }
+
 }

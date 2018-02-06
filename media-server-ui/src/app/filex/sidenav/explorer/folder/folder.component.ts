@@ -17,14 +17,17 @@ export class FolderComponent implements OnInit {
   ) { }
 
   folderNavHistory = [];
+  folderNavIndex = -1;
 
   ngOnInit() {
     console.log('msfolder', this.folderData);
 
-    this.folderService.getFolderContent().subscribe(res => {
-      this.folderData = res;
-      this.folderNavHistory.push(res);
-    });
+    // this.folderService.getFolderContent().subscribe(res => {
+    //   this.folderData = res;
+    //   this.folderNavHistory.push(res);
+    // });
+
+    this.accessFolder();
 
   }
 
@@ -46,21 +49,35 @@ export class FolderComponent implements OnInit {
     this.accessFolder(event._id);
   }
 
-  accessFolder(id) {
-    this.folderService.getFolderContent(id).subscribe(res => {
-      this.folderData = res;
-      this.folderNavHistory.push(res);
-    });
+  accessFolder(id?) {
+
+    const folderIndex = this.folderNavHistory.findIndex(f => f._id === id);
+
+    if (folderIndex < 0) {
+      this.folderService.getFolderContent(id).subscribe(res => {
+        this.folderData = res;
+        this.folderNavHistory = this.folderNavHistory.slice(0, this.folderNavIndex + 1);
+        this.folderNavHistory.push(this.folderData);
+        this.folderNavIndex += 1;
+      });
+    } else {
+      this.folderData = this.folderNavHistory[folderIndex];
+    }
+
+
+  }
+
+  onNavHistoryClick(f) {
+    this.accessFolder(f._id);
   }
 
 
-
   onNavigationBack(event) {
-    this.folderNavHistory.pop();
-    const id = this.folderNavHistory[this.folderNavHistory.length - 1]._id;
-    if(this.folderNavHistory.length > 1) {
-      this.folderNavHistory.pop();
+    if(this.folderNavIndex < 1) {
+      return;
     }
+    this.folderNavIndex -= 1;
+    const id = this.folderNavHistory[this.folderNavIndex]._id;
     this.accessFolder(id);
   }
 
