@@ -23,7 +23,6 @@ mongoose
 require('dotenv').config();
 
 
-
 const getFolder = p => {
 	let tree = p.split('/');
 	let rootIndex = tree.indexOf("Entertainment");
@@ -49,8 +48,18 @@ const readFiles = async function () {
         }
     }
 
-    mp3Files = await Promise.all(mp3Files.map(async f => {
-        const metadata = await readMetadata(f);
+    mp3Files = await Promise.all(mp3Files.map(async (f, index) => {
+        // console.log(index);
+        let metadata = {};
+
+        try {
+            
+            metadata = await readMetadata(f);
+        
+        } catch (error) {
+            // console.error(index)
+            // metadata = {}
+        }
         return {
             path: f, name: getName(fileNameExpression)(f),
             ...metadata
@@ -73,6 +82,7 @@ const readFiles = async function () {
 
     let files = await File.find();
 
+
     await Folder.remove();
 
     for(let f of files){
@@ -82,7 +92,8 @@ const readFiles = async function () {
         const folderName = R.last(folders);
         const tillLast = folders.slice(0, folders.length -1);
 
-        let folder = await Folder.findOne({name: folderName})
+        let folder = await Folder.findOne({ name: folderName })
+        
 
         if(!folder) {
             folder = new Folder({name: folderName});
@@ -92,6 +103,7 @@ const readFiles = async function () {
         folder.files.push(f._id);
         await folder.save();
 
+        
         let childId = folder._id;
         for(let fName of tillLast.reverse()) {
 
