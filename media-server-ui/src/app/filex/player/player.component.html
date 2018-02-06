@@ -4,8 +4,45 @@
 <div class="player">
 
     <div class="title">
-        {{file.name}}
+        {{file.title || file.name}}
+
     </div>
+    <div class="image" 
+    *ngIf="file && file.picture && file.picture[0] && file.picture[0].data"
+    [ngStyle]="{'background': ' url(data:image/png;base64,' + file.picture[0].data + ') center center no-repeat '}"
+    
+    >
+        <!-- <img class="albumart" [src]="'data:image/png;base64,'+file.picture[0].data" alt="Red dot" /> -->
+    </div>
+    <div class="description">
+
+        <div class="field artists">
+            <div class="label artists-label">
+                Artist
+            </div>
+            <div class="value artists-value">
+                {{file.artist}}
+            </div>
+        </div>
+
+        <div class="field albums">
+            <div class="label albums-label">
+                Album
+            </div>
+            <div class="value albums-value">
+                {{file.album}}
+            </div>
+        </div>
+        <div class="field name">
+            <div class="label name-label">
+                File Name
+            </div>
+            <div class="value name-value">
+                {{file.name}}
+            </div>
+        </div>
+    </div>
+
 
     <div class="seeker">
 
@@ -27,10 +64,10 @@
     </div>
 
     <div class="toggle-buttons">
-        <button mat-fab *ngIf="state.shuffle" color="primary"  (click)="toggleShuffle($event)">
+        <button mat-fab *ngIf="state.shuffle" color="primary" (click)="toggleShuffle($event)">
             <mat-icon aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
         </button>
-        <button mat-icon-button *ngIf="!state.shuffle"  (click)="toggleShuffle($event)">
+        <button mat-icon-button *ngIf="!state.shuffle" (click)="toggleShuffle($event)">
             <mat-icon color="warn" aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
         </button>
 

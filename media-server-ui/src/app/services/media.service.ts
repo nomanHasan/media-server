@@ -28,6 +28,10 @@ export class MediaService {
     return this.httpClient.get(this.TRACKS_URL);
   }
 
+  getSingleTrackById(id): Observable<any> {
+    return this.httpClient.get(`${this.TRACKS_URL}/details/${id}`);
+  }
+
   getTrackByTab(name): Observable<any> {
     return this.httpClient.get(`${this.API_URL}/${name}/`);
   }

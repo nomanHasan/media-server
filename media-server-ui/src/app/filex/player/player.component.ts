@@ -10,6 +10,7 @@ import {
 import {ElementRef} from '@angular/core';
 import {File} from '../../models/file.model';
 import { IPlayerState, RepeatModes, toggleRepeatModes, DefaultPlayerState } from './player-state.interface';
+import { MediaService } from '../../services/media.service';
 
 
 @Component({selector: 'ms-player', templateUrl: './player.component.html', styleUrls: ['./player.component.scss']})
@@ -19,8 +20,21 @@ export class PlayerComponent implements OnInit {
 
   audioElement: HTMLMediaElement;
 
-  @Input() state: IPlayerState =  DefaultPlayerState;
-  @Input() file: File;
+  @Input() state: IPlayerState = DefaultPlayerState;
+
+  _file: File;
+
+
+  @Input() set file(value: File) {
+    this._file = value;
+    this.mediaService.getSingleTrackById(this._file._id).subscribe(res => {
+      this._file = { ...this._file, ...res };
+    });
+  }
+
+  get file() {
+    return this._file;
+  }
 
   @Output() next = new EventEmitter < any > ();
   @Output() previous = new EventEmitter < any > ();
@@ -34,7 +48,9 @@ export class PlayerComponent implements OnInit {
 
   thumbLabel = true;
 
-  constructor() {}
+  constructor(
+    private mediaService: MediaService
+  ) {}
 
   ngOnInit() {
     this.audioElement = this.audio.nativeElement;

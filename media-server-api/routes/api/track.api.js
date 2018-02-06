@@ -42,7 +42,7 @@ router.get('/query', async (req, res, next) => {
 
 
 
-router.get('/id/:fileId', async (req, res, next) => {
+router.get('/details/:fileId', async (req, res, next) => {
     let fileId = req.params.fileId;
 
     

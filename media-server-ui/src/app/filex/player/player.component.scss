@@ -55,6 +55,45 @@ div.player {
 
     }
 
+    .description {
+        .field{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            .label{
+                width: 200px;
+                text-align: right;
+            }
+
+            .value{
+                width: 200px;
+                text-align: left;
+
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .image{
+
+
+        width: 250px;
+        height: 250px;
+
+
+        margin-right: auto;
+        margin-left: auto;
+
+
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+
 
 }
 .mat-fab.mat-primary{
