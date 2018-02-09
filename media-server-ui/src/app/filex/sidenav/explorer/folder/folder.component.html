@@ -21,7 +21,12 @@
         <!-- {{folderData.name}} -->
       </div>
       <div class="options">
-        <button mat-raised-button (click)="onClick($event)">Play</button>
+        <button mat-mini-fab (click)="onPlayAllClick($event)" title="Play All" >
+          <mat-icon>playlist_play</mat-icon>
+        </button>
+        <button mat-mini-fab (click)="onPlayListClick($event)" title="Play Songs">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
       </div>
     </div>
 

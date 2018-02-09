@@ -37,6 +37,8 @@ mat-card-title{
                 white-space: nowrap;
                 border: 1px solid #518efc;
 
+                cursor: pointer;
+
                 &.current {
                     background: #518efc;
                     color: white;
@@ -64,9 +66,18 @@ mat-card-title{
     color: white;
     margin-bottom: auto;
     background-color: #518fff;
+    cursor: pointer;
 }
 
-mat-card{
+mat-card.folder-container{
     background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#feffed));
     background: linear-gradient(to right, #ffffff, #feffed);
+
+
+    mat-list.folder-item-list{
+        border: 1px solid #ececcb;
+    }
+
+
+    
 }

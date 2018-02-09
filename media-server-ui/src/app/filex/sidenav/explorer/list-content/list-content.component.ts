@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'ms-folder-content',
-  templateUrl: './folder-content.component.html',
-  styleUrls: ['./folder-content.component.scss']
+  selector: 'ms-list-content',
+  templateUrl: './list-content.component.html',
+  styleUrls: ['./list-content.component.scss']
 })
-export class FolderContentComponent implements OnInit {
+export class ListContentComponent implements OnInit {
 
 
   @Input() folderData: any = {};
@@ -14,11 +14,12 @@ export class FolderContentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.folderData);
   }
 
   onClick(event) {
     this.folderAction.emit({
-      type: 'play-folder',
+      type: 'play-list',
       data: this.folderData
     });
   }

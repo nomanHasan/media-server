@@ -17,9 +17,10 @@ import { FormsModule } from '@angular/forms';
 import { SidenavComponent } from './filex/sidenav/sidenav.component';
 import { SearchBarComponent } from './filex/sidenav/search-bar/search-bar.component';
 import { PlaylistComponent } from './filex/sidenav/playlist/playlist.component';
-import { FolderContentComponent } from './filex/sidenav/explorer/folder-content/folder-content.component';
+import { ListContentComponent } from './filex/sidenav/explorer/list-content/list-content.component';
 import { FolderComponent } from './filex/sidenav/explorer/folder/folder.component';
 import { FolderService } from './services/folder.service';
+import { TrackListComponent } from './filex/sidenav/explorer/track-list/track-list.component';
 
 
 @NgModule({
@@ -31,8 +32,9 @@ import { FolderService } from './services/folder.service';
     SidenavComponent,
     SearchBarComponent,
     PlaylistComponent,
-    FolderContentComponent,
-    FolderComponent
+    ListContentComponent,
+    FolderComponent,
+    TrackListComponent
   ],
   imports: [
     BrowserModule,

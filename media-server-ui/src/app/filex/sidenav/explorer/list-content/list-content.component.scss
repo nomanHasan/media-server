@@ -3,8 +3,15 @@
     top: 51px;
     right: 20px;
     width: 50%;
-    height: calc(100vh - 222px);
+    height: calc(100vh - 215px);
     z-index: 99;
+
+
+    mat-card{
+        height: inherit;
+        background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#feffed));
+        background: linear-gradient(to right, #ffffff, #feffed);
+    }
 }
 
 .folder-item{
@@ -44,8 +51,4 @@ mat-list{
         margin-bottom: auto;
         background-color: #518fff;
     }
-}
-mat-card{
-    background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#feffed));
-    background: linear-gradient(to right, #ffffff, #feffed);
 }

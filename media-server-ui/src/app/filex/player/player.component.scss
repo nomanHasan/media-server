@@ -42,7 +42,13 @@ div.player {
         margin: 15px; 
 
         &.title{
+            margin: 10px 10px 5px 10px; 
             font-size: 18px;
+        }
+
+        &.subtitle {
+            margin-top: 5px;
+            font-size: 10px;
         }
 
         &.buttons{

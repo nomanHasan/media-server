@@ -5,8 +5,17 @@
 
     <div class="title">
         {{file.title || file.name}}
-
     </div>
+    <div class="subtitle">
+        <div class="artist">
+            {{file.artist}}
+        </div>
+        <div class="album">
+            {{file.album}}
+        </div>
+    </div>
+
+
     <div class="image-container">
         <div class="image" [ngStyle]="{'background': imageBackground, 'background-size':'250px 250px'}">
             
@@ -35,15 +44,21 @@
 
     </div>
 
-    <div class="toggle-buttons">
-        <button mat-fab *ngIf="state.shuffle" color="primary" (click)="toggleShuffle($event)">
+    <div class="toggle-buttons" *ngIf="state">
+        <button mat-mini-fab *ngIf="state.shuffle" title="Shuffle On" color="primary" (click)="toggleShuffle($event)">
             <mat-icon aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
         </button>
-        <button mat-icon-button *ngIf="!state.shuffle" (click)="toggleShuffle($event)">
-            <mat-icon color="warn" aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
+        <button mat-mini-fab *ngIf="!state.shuffle" title="Shuffle Off" (click)="toggleShuffle($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">shuffle</mat-icon>
         </button>
 
-        <button mat-icon-button (click)="toggleRepeat($event)">
+        <button mat-mini-fab *ngIf="state.repeat===RepeatModes.REPEAT_ALL" title="Repeat All" color="primary" (click)="toggleRepeat($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">repeat</mat-icon>
+        </button>
+        <button mat-mini-fab *ngIf="state.repeat===RepeatModes.REPEAT_ONCE" title="Repeat Once" color="accent"  (click)="toggleRepeat($event)">
+            <mat-icon aria-label="Example icon-button with a heart icon">repeat</mat-icon>
+        </button>
+        <button mat-mini-fab *ngIf="state.repeat===RepeatModes.REPEAT_NONE" title="Repeat Off" color="warn"  (click)="toggleRepeat($event)">
             <mat-icon aria-label="Example icon-button with a heart icon">repeat</mat-icon>
         </button>
     </div>
@@ -70,7 +85,7 @@
 
     </div>
 
-    <div class="description">
+    <div class="description" *ngIf="descriptionFlag">
 
         <div class="field artists">
             <div class="label artists-label">

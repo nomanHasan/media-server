@@ -149,14 +149,23 @@ export class FilexComponent implements OnInit {
         this.folderData.list = res.docs;
         this.folderData.name = event.value;
         this.folderData.field = event.field;
-        console.log(this.folderData);
       });
   }
 
   onFolderAction(event) {
-    console.log(event);
     switch (event.type) {
       case 'play-folder': {
+        this.setPlayList(event.data.files);
+        break;
+      }
+      case 'play-folder-all': {
+
+        this.mediaService.getFolderAllById(event.data._id).subscribe(res => {
+          this.setPlayList(res.files);
+        });
+        break;
+      }
+      case 'play-list': {
           this
             .mediaService
             .getTrackBySingleQuery({field: event.data.field, value: event.data.name[0]})

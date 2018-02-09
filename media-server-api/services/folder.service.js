@@ -29,3 +29,17 @@ exports.getFolderById = async (id) => {
     .populate('folders', folderFields);
     return folder;
 }
+
+exports.getFolderByIdWithAllTracks = async (id) => {
+    const folder = await Folder.findOne({_id: id })
+    .populate('files', fileFields);
+
+    let subfolders = await Promise.all(folder.folders.map(f => _this.getFolderByIdWithAllTracks(f)));
+
+    subfolders.forEach(f => {
+        folder.files.push(...f.files);
+    })
+
+
+    return folder;
+}

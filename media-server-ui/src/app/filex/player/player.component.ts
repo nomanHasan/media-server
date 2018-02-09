@@ -35,6 +35,7 @@ export class PlayerComponent implements OnInit {
   get file() {
     return this._file;
   }
+  RepeatModes = RepeatModes;
 
   @Output() next = new EventEmitter < any > ();
   @Output() previous = new EventEmitter < any > ();
@@ -47,6 +48,7 @@ export class PlayerComponent implements OnInit {
   volume = 100;
 
   thumbLabel = true;
+  descriptionFlag = false;
 
   constructor(
     private mediaService: MediaService

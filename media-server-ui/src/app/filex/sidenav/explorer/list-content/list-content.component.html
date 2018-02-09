@@ -7,7 +7,6 @@
     <mat-list-item *ngFor="let e of folderData.list"
       (click)="onItemClick(e)"
     >
-    <mat-icon *ngIf="e.type && e.type==='folder'" mat-list-icon>folder</mat-icon>
       <div class="folder-item">
         <p class="title"> {{e.title}} </p>
         <p class="duration"> {{e.duration}} </p>

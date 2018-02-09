@@ -76,5 +76,13 @@ export class MediaService {
     return this.httpClient.get(this.FOLDERS_URL);
   }
 
+  getFolderById(id): Observable<any> {
+    return this.httpClient.get(`${this.FOLDERS_URL}/${id}`);
+  }
+
+  getFolderAllById(id): Observable<any> {
+    return this.httpClient.get(`${this.FOLDERS_URL}/${id}/alltracks`);
+  }
+
 
 }

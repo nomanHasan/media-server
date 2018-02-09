@@ -10,6 +10,7 @@ import {File} from '../../../models/file.model';
 export class PlaylistComponent implements OnInit {
 
   @Input() fileList: File[] = [];
+  @Input() listName = 'Unknown';
 
 
   _selectedFile;
