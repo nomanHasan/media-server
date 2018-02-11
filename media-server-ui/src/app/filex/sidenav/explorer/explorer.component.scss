@@ -19,3 +19,16 @@ mat-card{
     background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#feffed));
     background: linear-gradient(to right, #ffffff, #feffed);
 }
+
+
+
+
+
+
+
+// Copy paste for 100% tab height
+/deep/ .mat-tab-body-content {
+
+    overflow: hidden !important;
+    height: calc(100vh - 100px) !important;
+}

@@ -20,7 +20,6 @@ export class TrackListComponent implements OnInit {
           name: 'All Tracks',
           list: res.docs
         };
-        console.log(this.folderData);
       });
   }
 
