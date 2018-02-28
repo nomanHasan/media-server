@@ -1,6 +1,6 @@
 <mat-card class="playlist">
-  <mat-card-title *ngIf="listName" class="playlist-title">
-    {{listName}}
+  <mat-card-title *ngIf="fileListName" class="playlist-title">
+    {{fileListName}}
   </mat-card-title>
   <mat-list id = "playlist-list" #list >
     <mat-list-item [ngClass]="{'selected': f.name === selectedFile.name}" *ngFor="let f of fileList" (click)="onItemClick($event, f)" >

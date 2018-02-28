@@ -3,7 +3,7 @@ mat-form-field{
 }
 
 mat-list{
-    height: calc(100vh - 167px);
+    height: calc(100vh - 115px);
 }
 
 .folder-content {
@@ -30,5 +30,5 @@ mat-card{
 /deep/ .mat-tab-body-content {
 
     overflow: hidden !important;
-    height: calc(100vh - 100px) !important;
+    height: calc(100vh - 52px) !important;
 }

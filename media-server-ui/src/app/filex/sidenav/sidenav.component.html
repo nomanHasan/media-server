@@ -1,9 +1,9 @@
-<div class="search-bar">
+<!-- <div class="search-bar">
   <ms-search-bar 
   (searched)="onSearch($event)">
 
   </ms-search-bar>
-</div>
+</div> -->
 
 
 <mat-tab-group>  
@@ -21,6 +21,7 @@
     <div class="playlist">
       <ms-playlist 
         [fileList]="fileList" 
+        [fileListName]="fileListName"
         [selectedFile]="selectedFile" 
         (fileClicked)="onFileClicked($event)">
       </ms-playlist>

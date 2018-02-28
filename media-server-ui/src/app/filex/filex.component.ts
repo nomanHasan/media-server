@@ -1,26 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {MediaService} from '../services/media.service';
-import {File} from '../models/file.model';
-import {DefaultPlayerState} from './player/player-state.interface';
+import { Component, OnInit } from '@angular/core';
+import { MediaService } from '../services/media.service';
+import { File } from '../models/file.model';
+import { DefaultPlayerState } from './player/player-state.interface';
 import * as Fuse from 'fuse.js';
 
-@Component({selector: 'ms-filex', templateUrl: './filex.component.html', styleUrls: ['./filex.component.scss']})
+@Component({ selector: 'ms-filex', templateUrl: './filex.component.html', styleUrls: ['./filex.component.scss'] })
 export class FilexComponent implements OnInit {
 
-  constructor(private mediaService : MediaService) {}
+  constructor(private mediaService: MediaService) { }
 
-  fileList : File[];
-  selectedFile : File;
+  fileList: File[];
+  fileListName = 'Unknown';
+  selectedFile: File;
 
   playerState = DefaultPlayerState;
 
-  previousIndexes : number[] = [];
+  previousIndexes: number[] = [];
 
   options;
   fuse;
   sidenavOpen = true;
 
-  folderData : any = {};
+  folderData: any = {};
 
   ngOnInit() {
 
@@ -50,20 +51,21 @@ export class FilexComponent implements OnInit {
 
   }
 
-  setPlayList(list) {
+  setPlayList(list, name = 'Unknown') {
 
     if (list.length <= 0) {
       return;
     }
 
     this.fileList = list;
+    this.fileListName = name;
     this.selectedFile = this.shuffleNext();
     this.setPlayingFileSrc(this.selectedFile._id);
 
     this.fuse = new Fuse(this.fileList, this.options);
   }
 
-  onFileClicked(file : File) {
+  onFileClicked(file: File) {
     this.selectedFile = file;
     this.setPlayingFileSrc(file._id);
   }
@@ -141,7 +143,6 @@ export class FilexComponent implements OnInit {
   }
 
   onFolderClicked(event) {
-    console.log(event);
     this
       .mediaService
       .getTrackBySingleQuery(event)
@@ -153,9 +154,10 @@ export class FilexComponent implements OnInit {
   }
 
   onFolderAction(event) {
+    console.log(event);
     switch (event.type) {
       case 'play-folder': {
-        this.setPlayList(event.data.files);
+        this.setPlayList(event.data.files, event.data.name);
         break;
       }
       case 'play-folder-all': {
@@ -166,17 +168,17 @@ export class FilexComponent implements OnInit {
         break;
       }
       case 'play-list': {
-          this
-            .mediaService
-            .getTrackBySingleQuery({field: event.data.field, value: event.data.name[0]})
-            .subscribe(res => {
-              this.setPlayList(res.docs);
-            });
-            break;
-        }
-        case 'play-item': {
-          this.setPlayList([event.data]);
-        }
+        this
+          .mediaService
+          .getTrackBySingleQuery({ field: event.data.field, value: event.data.name[0] })
+          .subscribe(res => {
+            this.setPlayList(res.docs);
+          });
+        break;
+      }
+      case 'play-item': {
+        this.setPlayList([event.data]);
+      }
     }
   }
 

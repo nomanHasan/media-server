@@ -2,6 +2,7 @@
   <mat-drawer #drawer class="example-sidenav" [opened]="sidenavOpen" mode="side">
         <ms-sidenav 
         [fileList]="fileList" 
+        [fileListName]="fileListName"
         (searched)="onFileSeach($event)" 
         [selectedFile]="selectedFile"
         [folderData]="folderData"

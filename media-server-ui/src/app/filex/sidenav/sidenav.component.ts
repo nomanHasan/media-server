@@ -11,6 +11,7 @@ export class SidenavComponent implements OnInit {
 
   @Input() selectedFile;
   @Input() fileList;
+  @Input() fileListName;
   @Input() folderData;
   @Output() fileClicked = new EventEmitter<any>();
   @Output() searched = new EventEmitter<any>();
