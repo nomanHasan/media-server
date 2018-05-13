@@ -1,5 +1,0 @@
-<mat-list #list >
-  <mat-list-item [ngClass]="{'selected': f.name === selectedFile.name}" *ngFor="let f of fileList" (click)="onItemClick($event, f)" >
-    <button mat-button>{{ f.title || f.name }}</button>
-  </mat-list-item>
-</mat-list>

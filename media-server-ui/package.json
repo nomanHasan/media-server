@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4300 --host 0.0.0.0 --environment=second --disable-host-check",
+    "start": "ng serve --port 5001 --host 0.0.0.0 --environment=second --disable-host-check",
     "build": "ng build --prod --aot --environment=second --output-path=/media/noman/Workstation/Docker_Workspace/Ubuntu_Docker/dist",
     "build:watch": "ng build --prod --aot --environment=second -watch --output-path=/media/noman/Workstation/Docker_Workspace/Ubuntu_Docker/dist",
     "test": "ng test",
